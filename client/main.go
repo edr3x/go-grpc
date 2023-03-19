@@ -14,22 +14,23 @@ const (
 
 func main() {
 	conn, err := grpc.Dial("localhost"+port, grpc.WithTransportCredentials(insecure.NewCredentials()))
-
 	if err != nil {
 		log.Fatalf("Could not connect: %v", err)
 	}
 
-	defer conn.Close()
+	defer conn.Close() // info: close the connection when the function returns
 
 	client := pb.NewGreetServiceClient(conn)
-
-	// callSayHello(client) // info: unary call i.e. request, response
 
 	names := &pb.NamesList{
 		Names: []string{"obi", "wan", "kenobi"},
 	}
 
+	// callSayHello(client) // info: unary call i.e. request, response
+
 	// callSayhelloServerStream(client, names) //info: server streaming call i.e. request, stream of responses
 
-	callSayHelloClientStream(client, names) //info: client streaming call i.e. stream of requests, response
+	// callSayHelloClientStream(client, names) //info: client streaming call i.e. stream of requests, response
+
+	callSayHelloBidirectionalStreaming(client, names) //info: bidirectional streaming call i.e. stream of requests, stream of responses
 }
