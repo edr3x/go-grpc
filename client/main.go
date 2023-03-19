@@ -28,5 +28,8 @@ func main() {
 	names := &pb.NamesList{
 		Names: []string{"obi", "wan", "kenobi"},
 	}
-	callSayhelloServerStream(client, names) //info: server streaming call i.e. request, stream of responses
+
+	// callSayhelloServerStream(client, names) //info: server streaming call i.e. request, stream of responses
+
+	callSayHelloClientStream(client, names) //info: client streaming call i.e. stream of requests, response
 }
