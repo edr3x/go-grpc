@@ -25,7 +25,7 @@ go mod tidy
 ## Create `*.pb.go` file
 
 ```bash
-protoc --go_out=. --go-grpc_out=. <relative-path-to-proto-file> # `proto/greet.progo` for this project
+protoc --go_out=. --go-grpc_out=. <relative-path-to-proto-file> # `proto/greet.proto` for this project
 ```
 
 ## Open two terminals, one on `server/` and another on `client/` directory and run
